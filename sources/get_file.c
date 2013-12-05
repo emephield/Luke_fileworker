@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 00:49:27 2013 souvisay keolasy
-** Last update Tue Nov 26 11:48:14 2013 souvisay keolasy
+** Last update Thu Dec  5 14:42:55 2013 souvisay keolasy
 */
 
 #include <sys/types.h>
@@ -50,14 +50,5 @@ t_item		**get_file()
   if ((ret = rec_fill_item(directory)) == NULL)
     return (NULL);
   sort_item(ret);
-
-  /* affichage */
-  /* while (*ret != NULL) */
-  /*   { */
-  /*     printf("%s\n", (*ret)->name); */
-  /*     ret++; */
-  /*   } */
-  /* affichage */
-
   return (ret);
 }

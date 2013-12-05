@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 07:55:41 2013 souvisay keolasy
-** Last update Tue Nov 26 08:26:47 2013 souvisay keolasy
+** Last update Thu Dec  5 17:30:24 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -16,10 +16,10 @@
 
 extern t_menu	g_menu[2];
 
-void	mk_subcol(int menu, int col, int inter)
+void	mk_subcol(int menu, int col, int inter, int start)
 {
-  mvwaddch(g_menu[menu].win, 0, col, ACS_TTEE);
-  mvwvline(g_menu[menu].win, 1, col, 0, WHEIGHT - 1);
+  mvwaddch(g_menu[menu].win, start - 1, col, ACS_TTEE);
+  mvwvline(g_menu[menu].win, start, col, 0, WHEIGHT - 1);
   mvwaddch(g_menu[menu].win, inter, col, ACS_PLUS);
   mvwaddch(g_menu[menu].win, WHEIGHT - 1, col, ACS_BTEE);
 }
@@ -41,8 +41,8 @@ void	mkbox()
     {
       box(g_menu[i].win, 0, 0);
       mk_subline(i, 2);
-      mk_subcol(i, WWIDTH - 13, 2);
-      wrefresh(g_menu[i].win);
+      mk_subline(i, 4);
+      mk_subcol(i, WWIDTH - 13, 4, 3);
       i++;
     }
 }

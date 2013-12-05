@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Wed Sep 25 09:02:18 2013 souvisay keolasy
-** Last update Sat Nov 23 01:15:40 2013 souvisay keolasy
+** Last update Thu Dec  5 15:38:21 2013 souvisay keolasy
 */
 
 #ifndef		TOOLS_H_
@@ -14,6 +14,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "boolean.h"
 
 # define	FD_EOF		0
 # define	SIGNED		0
@@ -37,6 +38,9 @@ char	*my_strndup(char *str, int len);
 int	my_strncmp(char *s1, char *s2, int size);
 char	*my_revstr(char *str);
 char	*my_stradd(char *s1, char *s2);
+t_bool	my_is_in(const char c, const char *delim);
+
+char	**strtok_tab(char *str, char *delim);
 
 int	my_read(const int fd, void *buf, const int count);
 int	my_close(int fd);

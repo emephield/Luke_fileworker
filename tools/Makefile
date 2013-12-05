@@ -5,7 +5,7 @@
 ## Login   <keolas_s@epitech.net>
 ## 
 ## Started on  Wed Sep 25 09:08:15 2013 souvisay keolasy
-## Last update Wed Dec  4 00:24:57 2013 souvisay keolasy
+## Last update Thu Dec  5 15:38:20 2013 souvisay keolasy
 ##
 
 NAME	= libtools.a
@@ -27,7 +27,9 @@ SRCS	= my_strlen.c \
 	  my_strndup.c \
 	  my_revstr.c \
 	  my_stradd.c \
-	  my_fd_func.c
+	  my_fd_func.c \
+	  strtok_tab.c \
+	  my_is_in.c
 
 OBJS	= $(SRCS:.c=.o)
 
