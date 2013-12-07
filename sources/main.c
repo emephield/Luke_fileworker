@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Fri Nov 22 21:49:13 2013 souvisay keolasy
-** Last update Thu Dec  5 17:27:36 2013 souvisay keolasy
+** Last update Sat Dec  7 20:34:40 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -24,6 +24,7 @@ void	my_init_color()
   init_pair(P_FONT, COLOR_YELLOW, COLOR_BLUE);
   init_pair(P_BACK, COLOR_YELLOW, COLOR_BLUE);
   init_pair(P_FORE, COLOR_BLUE, COLOR_CYAN);
+  init_pair(P_NFOC, COLOR_GREEN, COLOR_BLACK);
 }
 
 t_bool	init_aff()
@@ -36,33 +37,11 @@ t_bool	init_aff()
   g_menu[0].win = newwin(WHEIGHT, WWIDTH, 1, 2);
   g_menu[1].win = newwin(WHEIGHT, WWIDTH, 1, 2 + (COLS - 4 - 1) / 2 + 1);
   wbkgd(g_menu[0].win, COLOR_PAIR(P_FONT));
-  wbkgd(g_menu[1].win, COLOR_PAIR(P_FONT));
+  wbkgd(g_menu[1].win, COLOR_PAIR(P_NFOC));
   mkbox();
   printfield_name(0, NULL);
   printfield_name(1, NULL);
   return (TRUE);
-}
-
-void	cacahuete()
-{
-  int	i;
-  int	j;
-  t_item **itab;
-
-  i = g_menu[0].limit[0];
-  j = 0;
-  itab = g_menu[0].list;
-  while (itab[i + j] != NULL && i + j < g_menu[0].limit[1])
-    {
-      if (g_menu[0].cur == i + j)
-      	wattron(g_menu[0].win, COLOR_PAIR(P_FORE));
-      printfield(j + FIRST_P, itab[i + j]->name, time(NULL), 0);
-      printfield(j + FIRST_P, itab[i + j]->name, time(NULL), 1);
-      if (g_menu[0].cur == i + j)
-      	wattroff(g_menu[0].win, COLOR_PAIR(P_FORE));
-      j++;
-    }
-  printw("%d/", g_menu[0].cur);
 }
 
 t_bool	init_menu()
@@ -75,7 +54,7 @@ t_bool	init_menu()
   while (j < 2)
     {
       i = 0;
-      if ((g_menu[i].list = get_file()) == NULL)
+      if ((g_menu[j].list = get_file()) == NULL)
 	return (FALSE);
       if ((pwd = my_malloc((SIZE_PWD * sizeof(*pwd)) + 1)) == NULL)
 	return (FALSE);
@@ -101,7 +80,6 @@ int		main(int ac, char **av)
       init_aff();
       if (init_menu() == FALSE)
 	return (FALSE);
-      /* cacahuete(g_menu[0].list); */
       catch_key();
       endwin();
     }

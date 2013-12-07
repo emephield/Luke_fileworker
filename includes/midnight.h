@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 19 19:03:37 2013 souvisay keolasy
-** Last update Thu Dec  5 17:03:39 2013 souvisay keolasy
+** Last update Sat Dec  7 20:00:30 2013 souvisay keolasy
 */
 
 #ifndef		MIDNIGHT_H_
@@ -20,6 +20,7 @@
 # define	P_FONT	1
 # define	P_BACK	2
 # define	P_FORE	3
+# define	P_NFOC	4
 
 # define	WWIDTH	((COLS - 4 - 1) / 2)
 # define	WHEIGHT	(LINES - 2)
