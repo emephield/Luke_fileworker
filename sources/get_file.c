@@ -5,11 +5,12 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 00:49:27 2013 souvisay keolasy
-** Last update Thu Dec  5 14:42:55 2013 souvisay keolasy
+** Last update Wed Dec 11 13:56:51 2013 souvisay keolasy
 */
 
 #include <sys/types.h>
 #include <dirent.h>
+#include <stdlib.h>
 #include "boolean.h"
 #include "my_menu.h"
 #include "tools.h"
@@ -40,12 +41,41 @@ t_item		**rec_fill_item(DIR *directory)
   return (ret);
 }
 
-t_item		**get_file()
+char		*creat_path(char **path)
+{
+  char		*ret;
+  char		*temp;
+  char		*temp2;
+  int		i;
+
+  i = 0;
+  ret = NULL;
+  while (path[i] != NULL)
+    {
+      if ((temp = my_stradd("/", path[i])) == NULL)
+	return (NULL);
+      if ((temp2 = my_stradd(ret, temp)) == NULL)
+	return (NULL);
+      free(temp);
+      i++;
+      if (ret != NULL)
+	free(ret);
+      ret = temp2;
+    }
+  if (i == 0)
+    return ("/");
+  return (ret);
+}
+
+t_item		**get_file(char **src_path)
 {
   DIR		*directory;
   t_item	**ret;
+  char		*path;
 
-  if ((directory = opendir(".")) == NULL)
+  if ((path = creat_path(src_path)) == NULL)
+    return (FALSE);
+  if ((directory = opendir(path)) == NULL)
     return (NULL);
   if ((ret = rec_fill_item(directory)) == NULL)
     return (NULL);

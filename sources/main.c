@@ -5,10 +5,11 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Fri Nov 22 21:49:13 2013 souvisay keolasy
-** Last update Sat Dec  7 20:34:40 2013 souvisay keolasy
+** Last update Sun Dec  8 14:18:16 2013 souvisay keolasy
 */
 
 #include <curses.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "menu.h"
 #include "midnight.h"
@@ -54,8 +55,6 @@ t_bool	init_menu()
   while (j < 2)
     {
       i = 0;
-      if ((g_menu[j].list = get_file()) == NULL)
-	return (FALSE);
       if ((pwd = my_malloc((SIZE_PWD * sizeof(*pwd)) + 1)) == NULL)
 	return (FALSE);
       while (getcwd(pwd, i * SIZE_PWD) == NULL)
@@ -65,8 +64,11 @@ t_bool	init_menu()
 	  if ((pwd = my_malloc((i * SIZE_PWD * sizeof(*pwd)) + 1)) == NULL)
 	    return (FALSE);
 	}
-      g_menu[j].path = strtok_tab(pwd, "/\n");
+      if ((g_menu[j].path = strtok_tab(pwd, "/\n")) == NULL)
+	return (FALSE);
       g_menu[j].limit[1] = WHEIGHT - 6;
+      if ((g_menu[j].list = get_file(g_menu[j].path)) == NULL)
+	return (FALSE);
       j++;
     }
   return (TRUE);

@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Fri Nov 22 21:31:11 2013 souvisay keolasy
-** Last update Sat Dec  7 20:35:15 2013 souvisay keolasy
+** Last update Sun Dec  8 14:14:20 2013 souvisay keolasy
 */
 
 #ifndef		MY_MENU_H_
@@ -30,6 +30,7 @@ typedef struct	s_menu
   int		rows;
   int		namelen;
   int		fieldlen[2];
+  t_bool	chdir;
 }		t_menu;
 
 typedef	struct	s_move
@@ -42,8 +43,10 @@ t_item	*newitem(char *name);
 void	mkbox();
 void	printfield(int line, char *name, time_t date, int win);
 void	print_list(int focus);
+void	clear_screen(t_menu *menu);
 
 t_bool	arrow_up(t_menu *menu);
 t_bool	arrow_down(t_menu *menu);
+t_bool	arrow_left(t_menu *menu);
 
 #endif		/* MY_MENU_H_ */

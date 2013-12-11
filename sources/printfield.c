@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 08:34:54 2013 souvisay keolasy
-** Last update Sat Dec  7 20:34:37 2013 souvisay keolasy
+** Last update Sun Dec  8 18:57:22 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -24,21 +24,20 @@ void	my_nputnstr(char *str, int win, int max)
   int	i;
 
   i = 0;
-  while (str[i] != '\0' && i < max)
+  while (str[i] != '\0' && i <= max)
     {
       waddch(g_menu[win].win, (chtype) str[i]);
       i++;
     }
-  while (i < max || (my_strlen(str) > max && i <= max))
+  while (i <= max)
     {
-      waddch(g_menu[win].win, (chtype) ' ');
-
+      if (i == max + 1 && my_strlen(str) > max)
+	waddch(g_menu[win].win, (chtype) '~');
+      else
+	waddch(g_menu[win].win, (chtype) ' ');
       i++;
     }
-  if (my_strlen(str) > max)
-    waddch(g_menu[win].win, '~');
 }
-
 void	printfield(int line, char *name, time_t date, int win)
 {
   char		buff[12];
@@ -50,7 +49,7 @@ void	printfield(int line, char *name, time_t date, int win)
   if (date != 0)
     {
       wmove(g_menu[win].win, line, WWIDTH - (TIME_WIDTH + 1));
-      my_nputnstr(buff, win, TIME_WIDTH);
+      my_nputnstr(buff, win, TIME_WIDTH - 1);
     }
 }
 
@@ -59,7 +58,7 @@ t_bool	printfield_name(int win, char **path)
   wmove(g_menu[win].win, 3, 1);
   my_nputnstr(NAME_COL, win, WWIDTH - (NB_COLS + 1) - (TIME_WIDTH + 1));
   wmove(g_menu[win].win, 3, WWIDTH - (TIME_WIDTH + 1));
-  my_nputnstr(DATE_COL, win, TIME_WIDTH);
+  my_nputnstr(DATE_COL, win, TIME_WIDTH - 1);
   /* wmove(g_menu[win].win, 1, 1); */
   /* my_nputnstr(pwd, win, WWIDTH - 3); */
   /* free(pwd); */

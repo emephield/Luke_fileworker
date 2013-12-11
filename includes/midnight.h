@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 19 19:03:37 2013 souvisay keolasy
-** Last update Sat Dec  7 20:00:30 2013 souvisay keolasy
+** Last update Sun Dec  8 13:49:14 2013 souvisay keolasy
 */
 
 #ifndef		MIDNIGHT_H_
@@ -33,7 +33,7 @@
 # define	DATE_COL	"Date"
 
 t_bool		sort_item(t_item **tab);
-t_item		**get_file();
+t_item		**get_file(char **src_path);
 t_bool		printfield_name(int win, char **path);
 t_bool		catch_key();
 
