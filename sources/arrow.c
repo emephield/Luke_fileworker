@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Thu Dec  5 16:20:14 2013 souvisay keolasy
-** Last update Sun Dec  8 14:20:55 2013 souvisay keolasy
+** Last update Thu Dec 12 15:05:12 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -13,6 +13,7 @@
 #include "my_menu.h"
 #include "midnight.h"
 #include "boolean.h"
+#include "tools.h"
 
 t_bool	arrow_up(t_menu *menu)
 {
@@ -62,3 +63,21 @@ t_bool	arrow_left(t_menu *menu)
   return (TRUE);
 }
 
+t_bool	arrow_right(t_menu *menu)
+{
+  if (!(S_ISDIR(menu->list[menu->cur]->s_stat.st_mode)) ||
+      my_strcmp(menu->list[menu->cur]->name, ".") == 0)
+    return (TRUE);
+  if (my_strcmp(menu->list[menu->cur]->name, "..") == 0)
+    return (arrow_left(menu));
+  if ((menu->path = add_tab(menu->list[menu->cur]->name, menu->path)) == NULL)
+    return (FALSE);
+  if ((menu->list = get_file(menu->path)) == NULL)
+    return (FALSE);
+  clear_screen(menu);
+  menu->cur = 0;
+  menu->limit[0] = 0;
+  menu->limit[1] = WHEIGHT - 6;
+  /* exit(0); */
+  return (TRUE);
+}

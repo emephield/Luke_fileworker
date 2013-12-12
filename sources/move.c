@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Thu Dec  5 14:19:31 2013 souvisay keolasy
-** Last update Sun Dec  8 13:59:12 2013 souvisay keolasy
+** Last update Thu Dec 12 13:37:53 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -18,6 +18,7 @@ static t_move	g_movetab[] =
     {KEY_UP, &arrow_up},
     {KEY_DOWN, &arrow_down},
     {KEY_LEFT, &arrow_left},
+    {KEY_RIGHT, &arrow_right},
     {0, NULL}
   };
 

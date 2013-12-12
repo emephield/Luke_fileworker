@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Sun Dec  8 14:04:25 2013 souvisay keolasy
-** Last update Thu Dec 12 10:47:36 2013 souvisay keolasy
+** Last update Thu Dec 12 15:06:42 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -28,7 +28,7 @@ void	clear_screen(t_menu *menu)
 	  j++;
 	}
       wmove(menu->win, i + FIRST_P, 1 + j + 1);
-      while (j <= WWIDTH - (NB_COLS + 1))
+      while (j <= WWIDTH - (NB_COLS + 2))
 	{
 	  waddch(menu->win, (chtype) ' ');
 	  j++;

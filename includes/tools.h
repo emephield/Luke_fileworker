@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Wed Sep 25 09:02:18 2013 souvisay keolasy
-** Last update Thu Dec  5 15:38:21 2013 souvisay keolasy
+** Last update Thu Dec 12 13:26:09 2013 souvisay keolasy
 */
 
 #ifndef		TOOLS_H_
@@ -39,6 +39,7 @@ int	my_strncmp(char *s1, char *s2, int size);
 char	*my_revstr(char *str);
 char	*my_stradd(char *s1, char *s2);
 t_bool	my_is_in(const char c, const char *delim);
+char	**add_tab(char *str, char **tab);
 
 char	**strtok_tab(char *str, char *delim);
 

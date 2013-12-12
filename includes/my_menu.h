@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Fri Nov 22 21:31:11 2013 souvisay keolasy
-** Last update Thu Dec 12 11:06:30 2013 souvisay keolasy
+** Last update Thu Dec 12 13:37:54 2013 souvisay keolasy
 */
 
 #ifndef		MY_MENU_H_
@@ -51,5 +51,6 @@ void	clear_screen(t_menu *menu);
 t_bool	arrow_up(t_menu *menu);
 t_bool	arrow_down(t_menu *menu);
 t_bool	arrow_left(t_menu *menu);
+t_bool	arrow_right(t_menu *menu);
 
 #endif		/* MY_MENU_H_ */

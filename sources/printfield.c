@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 08:34:54 2013 souvisay keolasy
-** Last update Thu Dec 12 10:56:36 2013 souvisay keolasy
+** Last update Thu Dec 12 13:52:06 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -86,7 +86,7 @@ void	print_list(int focus)
 	{
 	  if (i == focus && g_menu[i].cur ==  g_menu[i].limit[0]+ j)
 	    wattron(g_menu[i].win, COLOR_PAIR(P_FORE));
-	  printfield(j + FIRST_P,itab[g_menu[i].limit[0] + j]->name, time(NULL), i);
+	  printfield(j + FIRST_P, itab[g_menu[i].limit[0] + j]->name, time(NULL), i);
 	  if (i == focus && g_menu[i].cur == g_menu[i].limit[0] + j)
 	    wattroff(g_menu[i].win, COLOR_PAIR(P_FORE));
 	  j++;
