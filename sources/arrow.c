@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Thu Dec  5 16:20:14 2013 souvisay keolasy
-** Last update Thu Dec 12 15:05:12 2013 souvisay keolasy
+** Last update Thu Dec 12 15:44:18 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -78,6 +78,5 @@ t_bool	arrow_right(t_menu *menu)
   menu->cur = 0;
   menu->limit[0] = 0;
   menu->limit[1] = WHEIGHT - 6;
-  /* exit(0); */
   return (TRUE);
 }

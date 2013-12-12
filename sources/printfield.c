@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 08:34:54 2013 souvisay keolasy
-** Last update Thu Dec 12 13:52:06 2013 souvisay keolasy
+** Last update Thu Dec 12 15:50:20 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -23,6 +23,8 @@ void	my_nputnstr(char *str, int win, int max)
 {
   int	i;
 
+  if (!str)
+    return ;
   i = 0;
   while (str[i] != '\0' && i <= max)
     {
@@ -38,19 +40,26 @@ void	my_nputnstr(char *str, int win, int max)
       i++;
     }
 }
-void	printfield(int line, char *name, time_t date, int win)
+void	printfield(int line, t_item *item, int win)
 {
   char		buff[12];
+  char		*name;
+  char		*temp;
 
   my_bzero(buff, 11);
-  strftime(buff, 12, "%a %d %Y", localtime(&date));
+  strftime(buff, 12, "%a %d %Y", localtime(&item->s_stat.st_mtime));
+  name = item->name;
+  if (S_ISDIR(item->s_stat.st_mode))
+    temp = "/";
+  else
+    temp = " ";
+  if ((name = my_stradd(temp, name)) == NULL)
+    return ;
   wmove(g_menu[win].win, line, 1);
   my_nputnstr(name, win, WWIDTH - (NB_COLS + 1) - (TIME_WIDTH + 1));
-  if (date != 0)
-    {
-      wmove(g_menu[win].win, line, WWIDTH - (TIME_WIDTH + 1));
-      my_nputnstr(buff, win, TIME_WIDTH - 1);
-    }
+  wmove(g_menu[win].win, line, WWIDTH - (TIME_WIDTH + 1));
+  my_nputnstr(buff, win, TIME_WIDTH - 1);
+  free(name);
 }
 
 t_bool	printfield_name(int win, char **path)
@@ -86,7 +95,7 @@ void	print_list(int focus)
 	{
 	  if (i == focus && g_menu[i].cur ==  g_menu[i].limit[0]+ j)
 	    wattron(g_menu[i].win, COLOR_PAIR(P_FORE));
-	  printfield(j + FIRST_P, itab[g_menu[i].limit[0] + j]->name, time(NULL), i);
+	  printfield(j + FIRST_P, itab[g_menu[i].limit[0] + j], i);
 	  if (i == focus && g_menu[i].cur == g_menu[i].limit[0] + j)
 	    wattroff(g_menu[i].win, COLOR_PAIR(P_FORE));
 	  j++;

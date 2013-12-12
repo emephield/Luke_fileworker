@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 19 19:03:37 2013 souvisay keolasy
-** Last update Thu Dec 12 10:48:23 2013 souvisay keolasy
+** Last update Thu Dec 12 16:02:10 2013 souvisay keolasy
 */
 
 #ifndef		MIDNIGHT_H_
@@ -31,7 +31,7 @@
 # define	FIRST_P		5
 # define	SIZE_PWD	1024
 # define	NAME_COL	"Name"
-# define	DATE_COL	"Date"
+# define	DATE_COL	"Last Modify"
 
 t_bool		sort_item(t_item **tab);
 t_item		**get_file(char **src_path);
