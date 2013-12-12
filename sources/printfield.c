@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 08:34:54 2013 souvisay keolasy
-** Last update Sun Dec  8 18:57:22 2013 souvisay keolasy
+** Last update Thu Dec 12 10:56:36 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -55,13 +55,18 @@ void	printfield(int line, char *name, time_t date, int win)
 
 t_bool	printfield_name(int win, char **path)
 {
+  char	*pwd;
+
   wmove(g_menu[win].win, 3, 1);
   my_nputnstr(NAME_COL, win, WWIDTH - (NB_COLS + 1) - (TIME_WIDTH + 1));
   wmove(g_menu[win].win, 3, WWIDTH - (TIME_WIDTH + 1));
   my_nputnstr(DATE_COL, win, TIME_WIDTH - 1);
-  /* wmove(g_menu[win].win, 1, 1); */
-  /* my_nputnstr(pwd, win, WWIDTH - 3); */
-  /* free(pwd); */
+  wmove(g_menu[win].win, 1, 1);
+  if ((pwd = creat_path(path)) == FALSE)
+    return (FALSE);
+  my_nputnstr(pwd, win, WWIDTH - 3);
+  if (my_strlen(pwd) != 1)
+      free(pwd);
   return (TRUE);
 }
 
@@ -86,6 +91,7 @@ void	print_list(int focus)
 	    wattroff(g_menu[i].win, COLOR_PAIR(P_FORE));
 	  j++;
 	}
+      printfield_name(i, g_menu[i].path);
       i++;
     }
 }

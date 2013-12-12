@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 00:49:27 2013 souvisay keolasy
-** Last update Wed Dec 11 13:56:51 2013 souvisay keolasy
+** Last update Thu Dec 12 11:06:58 2013 souvisay keolasy
 */
 
 #include <sys/types.h>
@@ -16,7 +16,7 @@
 #include "tools.h"
 #include "midnight.h"
 
-t_item		**rec_fill_item(DIR *directory)
+t_item		**rec_fill_item(DIR *directory, char **src_path)
 {
   static int	count = 0;
   struct dirent *file;
@@ -26,9 +26,9 @@ t_item		**rec_fill_item(DIR *directory)
   if ((file = readdir(directory)) != NULL)
     {
       count++;
-      if ((ret = rec_fill_item(directory)) == NULL)
+      if ((ret = rec_fill_item(directory, src_path)) == NULL)
 	return (NULL);
-      if ((item = newitem(file->d_name)) == NULL)
+      if ((item = newitem(file->d_name, src_path)) == NULL)
 	return (NULL);
       --count;
       ret[count] = item;
@@ -77,7 +77,7 @@ t_item		**get_file(char **src_path)
     return (FALSE);
   if ((directory = opendir(path)) == NULL)
     return (NULL);
-  if ((ret = rec_fill_item(directory)) == NULL)
+  if ((ret = rec_fill_item(directory, src_path)) == NULL)
     return (NULL);
   sort_item(ret);
   return (ret);

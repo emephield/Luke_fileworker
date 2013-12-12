@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Fri Nov 22 21:31:11 2013 souvisay keolasy
-** Last update Sun Dec  8 14:14:20 2013 souvisay keolasy
+** Last update Thu Dec 12 11:06:30 2013 souvisay keolasy
 */
 
 #ifndef		MY_MENU_H_
@@ -13,11 +13,14 @@
 
 # include	<curses.h>
 # include	<time.h>
+#include	<sys/stat.h>
 # include	"boolean.h"
 
 typedef struct	s_item
 {
   char		*name;
+  char		**pwd;
+  struct stat	s_stat;
 }		t_item;
 
 typedef struct	s_menu
@@ -39,7 +42,7 @@ typedef	struct	s_move
   t_bool	(*fct)(t_menu *menu);
 }		t_move;
 
-t_item	*newitem(char *name);
+t_item	*newitem(char *name, char **src_path);
 void	mkbox();
 void	printfield(int line, char *name, time_t date, int win);
 void	print_list(int focus);

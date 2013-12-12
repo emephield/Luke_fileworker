@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Fri Nov 22 21:49:13 2013 souvisay keolasy
-** Last update Sun Dec  8 14:18:16 2013 souvisay keolasy
+** Last update Thu Dec 12 10:54:51 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -26,6 +26,7 @@ void	my_init_color()
   init_pair(P_BACK, COLOR_YELLOW, COLOR_BLUE);
   init_pair(P_FORE, COLOR_BLUE, COLOR_CYAN);
   init_pair(P_NFOC, COLOR_GREEN, COLOR_BLACK);
+  init_pair(P_DIRE, COLOR_CYAN, COLOR_BLUE);
 }
 
 t_bool	init_aff()
@@ -40,8 +41,6 @@ t_bool	init_aff()
   wbkgd(g_menu[0].win, COLOR_PAIR(P_FONT));
   wbkgd(g_menu[1].win, COLOR_PAIR(P_NFOC));
   mkbox();
-  printfield_name(0, NULL);
-  printfield_name(1, NULL);
   return (TRUE);
 }
 
