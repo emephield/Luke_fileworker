@@ -5,9 +5,10 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 00:49:27 2013 souvisay keolasy
-** Last update Thu Dec 12 11:06:58 2013 souvisay keolasy
+** Last update Fri Dec 13 07:59:05 2013 souvisay keolasy
 */
 
+#include <unistd.h>
 #include <sys/types.h>
 #include <dirent.h>
 #include <stdlib.h>
@@ -75,6 +76,8 @@ t_item		**get_file(char **src_path)
 
   if ((path = creat_path(src_path)) == NULL)
     return (FALSE);
+  if (access(path, X_OK) != FALSE)
+    return (NULL);
   if ((directory = opendir(path)) == NULL)
     return (NULL);
   if ((ret = rec_fill_item(directory, src_path)) == NULL)

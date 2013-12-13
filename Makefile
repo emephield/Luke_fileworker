@@ -5,12 +5,12 @@
 ## Login   <keolas_s@epitech.net>
 ## 
 ## Started on  Tue Nov 19 19:00:54 2013 souvisay keolasy
-## Last update Sun Dec  8 14:14:45 2013 souvisay keolasy
+## Last update Fri Dec 13 08:17:11 2013 souvisay keolasy
 ##
 
 SRCSDIR	= sources
 INCSDIR	= includes
-BINSDIR	= bins
+BINSDIR	= bin
 BONUDIR	= bonus
 
 NAME	= $(BINSDIR)/midnight
@@ -23,7 +23,8 @@ SRCS	= $(SRCSDIR)/main.c \
 	  $(SRCSDIR)/get_file.c \
 	  $(SRCSDIR)/arrow.c \
 	  $(SRCSDIR)/move.c \
-	  $(SRCSDIR)/clear_screen.c
+	  $(SRCSDIR)/clear_screen.c \
+	  $(SRCSDIR)/printw_error.c
 
 OBJS	= $(SRCS:.c=.o)
 

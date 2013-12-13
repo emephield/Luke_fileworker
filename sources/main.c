@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Fri Nov 22 21:49:13 2013 souvisay keolasy
-** Last update Thu Dec 12 10:54:51 2013 souvisay keolasy
+** Last update Fri Dec 13 08:10:17 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -27,6 +27,7 @@ void	my_init_color()
   init_pair(P_FORE, COLOR_BLUE, COLOR_CYAN);
   init_pair(P_NFOC, COLOR_GREEN, COLOR_BLACK);
   init_pair(P_DIRE, COLOR_CYAN, COLOR_BLUE);
+  init_pair(P_ERR, COLOR_RED, COLOR_BLACK);
 }
 
 t_bool	init_aff()

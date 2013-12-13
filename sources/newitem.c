@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Fri Nov 22 22:04:36 2013 souvisay keolasy
-** Last update Thu Dec 12 15:02:26 2013 souvisay keolasy
+** Last update Thu Dec 12 18:11:10 2013 souvisay keolasy
 */
 
 #include <stdlib.h>
@@ -29,7 +29,10 @@ t_item		*newitem(char *name, char **src_path)
   temp = creat_path(src_path);
   temp = my_stradd(temp, "/");
   temp = my_stradd(temp, name);
-  stat(temp, &item->s_stat);
+  if (stat(temp, &item->s_stat) == -1)
+    {
+      
+    }
   free(temp);
   return (item);
 }

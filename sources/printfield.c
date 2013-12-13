@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 26 08:34:54 2013 souvisay keolasy
-** Last update Thu Dec 12 15:50:20 2013 souvisay keolasy
+** Last update Fri Dec 13 08:07:11 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -66,6 +66,7 @@ t_bool	printfield_name(int win, char **path)
 {
   char	*pwd;
 
+  wattron(g_menu[win].win, A_BOLD);
   wmove(g_menu[win].win, 3, 1);
   my_nputnstr(NAME_COL, win, WWIDTH - (NB_COLS + 1) - (TIME_WIDTH + 1));
   wmove(g_menu[win].win, 3, WWIDTH - (TIME_WIDTH + 1));
@@ -76,6 +77,7 @@ t_bool	printfield_name(int win, char **path)
   my_nputnstr(pwd, win, WWIDTH - 3);
   if (my_strlen(pwd) != 1)
       free(pwd);
+  wattroff(g_menu[win].win, A_BOLD);
   return (TRUE);
 }
 
@@ -90,7 +92,7 @@ void	print_list(int focus)
     {
       j = 0;
       itab = g_menu[i].list;
-      while (itab[g_menu[i].limit[0]+ j] != NULL && 
+      while (itab[g_menu[i].limit[0]+ j] != NULL &&
 	     g_menu[i].limit[0]+ j < g_menu[0].limit[1])
 	{
 	  if (i == focus && g_menu[i].cur ==  g_menu[i].limit[0]+ j)

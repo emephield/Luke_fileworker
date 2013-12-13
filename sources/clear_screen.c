@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Sun Dec  8 14:04:25 2013 souvisay keolasy
-** Last update Thu Dec 12 15:06:42 2013 souvisay keolasy
+** Last update Fri Dec 13 08:11:10 2013 souvisay keolasy
 */
 
 #include <curses.h>
@@ -35,4 +35,5 @@ void	clear_screen(t_menu *menu)
 	}
       i++;
     }
+  mvprintw(LINES - 1, 0 , "\n");
 }
