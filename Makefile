@@ -5,7 +5,7 @@
 ## Login   <keolas_s@epitech.net>
 ## 
 ## Started on  Tue Nov 19 19:00:54 2013 souvisay keolasy
-## Last update Fri Dec 13 08:17:11 2013 souvisay keolasy
+## Last update Fri Dec 13 09:03:35 2013 souvisay keolasy
 ##
 
 SRCSDIR	= sources
@@ -24,7 +24,8 @@ SRCS	= $(SRCSDIR)/main.c \
 	  $(SRCSDIR)/arrow.c \
 	  $(SRCSDIR)/move.c \
 	  $(SRCSDIR)/clear_screen.c \
-	  $(SRCSDIR)/printw_error.c
+	  $(SRCSDIR)/printw_error.c \
+	  $(SRCSDIR)/exec_sh.c
 
 OBJS	= $(SRCS:.c=.o)
 
