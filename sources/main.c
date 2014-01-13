@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Fri Nov 22 21:49:13 2013 souvisay keolasy
-** Last update Sat Dec 14 16:16:00 2013 souvisay keolasy
+** Last update Sun Jan 12 14:57:19 2014 keolas_s
 */
 
 #include <curses.h>
@@ -27,6 +27,7 @@ void	my_init_color()
   init_pair(P_NFOC, COLOR_GREEN, COLOR_BLACK);
   init_pair(P_DIRE, COLOR_CYAN, COLOR_BLUE);
   init_pair(P_ERR, COLOR_RED, COLOR_BLACK);
+  init_pair(P_MEN, COLOR_BLUE, COLOR_WHITE);
 }
 
 t_bool	init_aff()
@@ -35,6 +36,7 @@ t_bool	init_aff()
 
   if (trigger == FALSE)
     {
+      slk_init(3);
       initscr();
       cbreak();
       noecho();
@@ -42,6 +44,8 @@ t_bool	init_aff()
       curs_set(0);
       g_ctrl.menu[0].win = newwin(WHEIGHT, WWIDTH, 1, 2);
       g_ctrl.menu[1].win = newwin(WHEIGHT, WWIDTH, 1, 2 + (COLS - 4 - 1) / 2 + 1);
+      slk_set(2, "Edit", 0);
+      slk_refresh();
     }
   trigger = TRUE;
   wbkgd(g_ctrl.menu[g_ctrl.focus].win, COLOR_PAIR(P_FONT));

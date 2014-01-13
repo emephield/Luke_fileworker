@@ -5,7 +5,7 @@
 ** Login   <keolas_s@epitech.net>
 ** 
 ** Started on  Tue Nov 19 19:03:37 2013 souvisay keolasy
-** Last update Fri Dec 13 17:36:58 2013 souvisay keolasy
+** Last update Sun Jan 12 14:39:31 2014 keolas_s
 */
 
 #ifndef		MIDNIGHT_H_
@@ -43,5 +43,6 @@ t_bool		printfield_name(int win, char **path);
 t_bool		catch_key();
 char		*creat_path(char **path);
 void		printw_error(char *str);
+t_bool		init_aff();
 
 #endif		/* MIDNIGHT_H_ */
